@@ -13,18 +13,46 @@ const app = express();
 const http = require("http");
 const port = 8080;
 const fs = require("fs");
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static("view"));
 
-// init sqlite db
+pass1 = "1";
+pass2 = "2";
+function callback(responseText){
+    var save = responseText;
+    pass2 = save;
+}
+
+function readTextFile(file, act_on_response)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                callback(rawFile.responseText);
+            }
+        }
+    }
+    rawFile.send();
+}
+
+readTextFile("file://C:/Users/adiso/Downloads/password.txt")
+console.log(pass2);
+// init db
 var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: " ",
+  password: pass2,
   database: "testdb"
 });
 
