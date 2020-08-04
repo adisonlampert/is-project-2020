@@ -1,0 +1,109 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <title>STEMbase</title>
+
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="client.js" defer></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  </head>
+  <body>
+    <div class=" navbar opp-nav">
+      <div class="logo-container">
+        <p class="name">
+          Connect Z
+        </p>
+      </div>
+      <div class="navbar-options">
+        <a class="tab" href="index.html">HOME</a>
+        <a class="tab" id="opp" href="opportunities.html">OPPORTUNITIES</a>
+        <a class="tab" href="upload.html">ADD+</a>
+      </div>
+    </div>
+    <div class="ombre-below"></div>
+    <div class="main opp-container">
+      <div class="filter">
+        <div class="options">
+          <label value="type" class="type-label">Type</label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Summer Camp">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Summer Camp
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Internship">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Internship
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Mentorship">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Mentorship
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Learning">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Learning
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Social">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Social
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Hackathons">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Hackathons
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="CTF">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              CTF
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Competition">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Competition
+            </label>
+            <label type="checkbox" checked="checked" class="name-type container-opp" value="Other">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Other
+            </label>
+        </div>
+        <div class="opp-divider"></div>
+      </div>
+
+
+      <div class="opp-main">
+        <div class="opp-container"></div>
+      </div>
+
+    </div>
+    <div class="button-container">
+      <div class="back button button-inactive"> &larr; Prev </div>
+      <div class="page-nav-container"></div>
+      <div class="next button button-inactive">Next &rarr; </div>
+    </div>
+
+
+    <script src="/opp-script.js"></script>
+
+  </body>
+</html>

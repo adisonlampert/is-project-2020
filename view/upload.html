@@ -1,0 +1,181 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <title>STEMbase</title>
+
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- import the webpage's client-side javascript file -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body class="upload-page">
+    <div class="navbar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="https://cdn.glitch.com/461e15a6-104d-4389-8edf-3007c05d5972%2Fthumbnails%2Fstemlogo.png?1592940931623"
+        />
+
+        <p class="name">
+          STEMbase
+        </p>
+      </div>
+      <div class="navbar-options">
+        <a class="tab" href="index.html">HOME</a>
+        <a class="tab" href="opportunities.html">OPPORTUNITIES</a>
+        <a class="tab" href="upload.html">ADD+</a>
+      </div>
+    </div>
+    <div class="main"></div>
+
+    <form class="upload-form">
+      <p class="upload-header">UPLOAD AN OPPORTUNITY NOW!</p>
+
+      <label>Name</label>
+      <input
+        class="input"
+        type="text"
+        id="name-opportunity"
+        placeholder="Name of Opportunity"
+      />
+
+      <label value="category">Category</label>
+      <select>
+        <option class="name-cat" value="Computer Science"
+          >Computer Science</option
+        >
+        <option class="name-cat" value="Physics">Physics</option>
+        <option class="name-cat" value="Math">Math</option>
+        <option class="name-cat" value="Tech">Technology</option>
+        <option class="name-cat" value="Engineering">Engineering</option>
+        <option class="name-cat" value="Science">Science</option>
+        <option class="name-cat" value="Medicine">Medicine</option>
+        <option class="name-cat" value="Other">Other</option>
+      </select>
+
+      <label value="type">Type</label>
+      <select>
+        <option class="name-type" value="Summer Camp">Summer Camp</option>
+        <option class="name-type" value="Internship">Internship</option>
+        <option class="name-type" value="Mentorship">Mentorship</option>
+        <option class="name-type" value="Learning">Learning</option>
+        <option class="name-type" value="Social">Social</option>
+        <option class="name-type" value="Hackathons">Hackathons</option>
+        <option class="name-type" value="CTF">CTF</option>
+        <option class="name-type" value="Competition">Competition</option>
+        <option class="name-type" value="Other">Other</option>
+      </select>
+
+      <label>Location</label>
+      <input
+        class="input"
+        type="text"
+        id="location"
+        placeholder="Location or Remote"
+      />
+
+      <br />
+      <label>Start/End Date</label>
+      <label class="radio-inline"
+        ><input type="radio" id="ongoing" value="Ongoing" name="date-range" />
+        Ongoing</label
+      >
+
+      <label class="radio-inline"
+        ><input
+          type="radio"
+          id="intermittent"
+          value="Intermittent"
+          name="date-range"
+        />Intermittent</label
+      >
+
+      <div class="start-end-date">
+        <input id="start-date" type="date" />
+        <input id="end-date" type="date" />
+      </div>
+
+      <br />
+
+      <label>Application Deadline?</label>
+
+      <label class="radio-inline"
+        ><input
+          type="radio"
+          id="yes-date"
+          name="deadline"
+          class="deadline"
+          value="Yes"
+        />Yes</label
+      >
+      <label class="radio-inline"
+        ><input
+          type="radio"
+          id="no-date"
+          name="deadline"
+          class="deadline"
+          value="No"
+        />No</label
+      >
+      <div class="app-deadline">
+        <input type="date" id="application-deadline" />
+      </div>
+
+      <br />
+
+      <label>Does it cost money?</label>
+
+      <label class="radio-inline"
+        ><input
+          type="radio"
+          id="yes-cost"
+          name="cost"
+          value="Yes Cost"
+        />Yes</label
+      >
+      <label class="radio-inline"
+        ><input
+          type="radio"
+          id="no-cost"
+          name="cost"
+          value="No Cost"
+        />No</label
+      >
+      <div class="price">
+        <input type="float" id="price" placeholder="Price" />
+      </div>
+
+      <br />
+
+      <label>Description</label>
+      <textarea class="message" rows="2" cols="30" id="description"></textarea>
+      <span class="countdown"></span>
+
+      <br />
+
+      <label>Link</label>
+      <input
+        class="input"
+        type="url"
+        id="link"
+        placeholder="Paste Link to Opportunity"
+      />
+
+      <button class="upload-button">Upload</button>
+    </form>
+
+  </body>
+</html>
