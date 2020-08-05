@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 app.use(express.static("view"));
 
-pass1 = "1";
+
 pass2 = "2";
 function callback(responseText){
     var save = responseText;
