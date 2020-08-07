@@ -79,16 +79,23 @@ body {
   margin-bottom: 20px;
   background-color: #EBEBEB;
 }
+.upload-main {
+  display: flex;
+  justify-content: center;
+}
 
 .upload-form {
+  background-color: #1F1F1F;
+  color: #EBEBEB;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  width: 95%;
+  width: 75%;
+  border-radius: 40px;
   justify-content: center;
 }
 .upload-page {
-  background: white;
+  background: #EBEBEB;
 }
 .input {
   padding: 5px;
@@ -101,7 +108,6 @@ body {
 }
 
 .upload-header {
-  color: black;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
