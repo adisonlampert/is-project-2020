@@ -1,5 +1,4 @@
 var oppsList = [];
-console.log("it's doing something");
 
 fetch("/getOpps", {})
   .then(res => res.json())

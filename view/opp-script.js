@@ -158,7 +158,7 @@ function page_nav(opp_num) {
             $(".button[value='2']").removeClass("button-hidden");
             $(".button[value='3']").removeClass("button-hidden");
             for(var i = 4; i < pages; i++){
-                $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
+              $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
             }
             $(".dot-start").each(function() {
               $(this).css("display", "hidden");
@@ -194,7 +194,7 @@ function page_nav(opp_num) {
               $(this).css("display", "block");
             });
             for(var i = new_page-2; i > 1; i--){
-                $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
+              $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
             }
             $(`.button[value='${(new_page-1).toString()}']`).removeClass("button-hidden");
           }
@@ -250,7 +250,7 @@ function page_nav(opp_num) {
             $(this).css("display", "block");
           });
           for(var i = new_page-2; i > 1; i--){
-              $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
+            $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
           }
         }
         if(parseInt(new_page) < 3){
@@ -261,7 +261,7 @@ function page_nav(opp_num) {
             $(this).css("display", "hidden");
           });
           for(var i = 4; i < pages; i++){
-              $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
+            $(`.button[value='${(i).toString()}']`).addClass("button-hidden");
           }
         }
         $(".dot-end").each(function() {
