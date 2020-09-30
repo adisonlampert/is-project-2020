@@ -1,36 +1,12 @@
-function updateCountdown() {
-  // 140 is the max message length
-  var remaining = 800 - jQuery(".message").val().length;
-  jQuery(".countdown").text(remaining + " characters remaining.");
-}
-
-jQuery(document).ready(function($) {
-  updateCountdown();
-  $(".message").change(updateCountdown);
-  $(".message").keyup(updateCountdown);
-  $(".app-deadline").hide();
-  $(".start-end-date").hide();
-  $(".price").hide();
+//easydropdown.all();
+$(document).ready(function() {
+$('.js-example-basic-single').select2()
 });
 
-$("#yes-date").click(function() {
-  $(".app-deadline").show();
+var width = $(window).width();
+$(window).on('resize', function() {
+  if ($(this).width() !== width) {
+    width = $(this).width();
+    $('.js-example-basic-single').select2();
+  }
 });
-
-$("#no-date").click(function() {
-  $(".app-deadline").hide();
-});
-$("#ongoing").click(function() {
-  $(".start-end-date").hide();
-});
-$("#intermittent").click(function() {
-  $(".start-end-date").show();
-});
-$("#yes-cost").click(function() {
-  $(".price").show();
-});
-$("#no-cost").click(function() {
-  $(".price").hide();
-});
-
-
