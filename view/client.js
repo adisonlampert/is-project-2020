@@ -20,44 +20,42 @@ fetch("/getOpps", {})
     });
   });
 
-// var button = $(".upload-button");
-// button.on("click", getValues);
-//
-// function getValues() {
-//   event.preventDefault();
-//
-//   var name = $("#name-opportunity").val();
-//
-//   var category = $(".name-cat").val();
-//   var type = $(".name-type").val();
-//   var location = $("#location").val();
-//
-//   var dateRange = $("input[name='date-range']:checked").val();
-//   if (dateRange == "Intermittent") {
-//     dateRange = `${$("#start-date").val()} to ${$("#end-date").val()}`;
-//   } else {
-//     dateRange = "Ongoing";
-//   }
-//
-//   var deadline = $("input[name='deadline']:checked").val();
-//   if (deadline == "Yes") {
-//     deadline = $("#application-deadline").val();
-//   } else {
-//     deadline = "None";
-//   }
-//
-//   var cost = $("input[name='cost']:checked").val();
-//   if (cost == "Yes") {
-//     cost = $("#price").val();
-//   } else {
-//     cost = "None";
-//   }
-//
-//   var description = $("#description").val();
-//
-//   var link = $("#link").val();
-//
-//   var opp_description = {
+var button = $(".upload-button");
+button.on("click", getValues);
+
+function getValues() {
+  event.preventDefault();
+  var name = $("#name-opportunity").val();
+
+  var category = $(".name-cat").val();
+  var type = $(".name-type").val();
+  var location = $("#location").val();
+
+  var dateRange = $("input[name='date-range']:checked").val();
+  if (dateRange == "Intermittent") {
+    dateRange = `${$("#start-date").val()} to ${$("#end-date").val()}`;
+  } else {
+    dateRange = "Ongoing";
+  }
+
+  var deadline = $("input[name='deadline']:checked").val();
+  if (deadline == "Yes") {
+    deadline = $("#application-deadline").val();
+  } else {
+    deadline = "None";
+  }
+  var cost = $("input[name='cost']:checked").val();
+  if (cost == "Yes") {
+    cost = $("#price").val();
+  } else {
+    cost = "None";
+  }
+
+  var description = $("#description").val();
+
+  var link = $("#link").val();
+
+  var opp_description = {
 //     name: name,
 //     category: category,
 //     type: type,
