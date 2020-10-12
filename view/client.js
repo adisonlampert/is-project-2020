@@ -20,22 +20,25 @@ fetch("/getOpps", {})
     });
   });
 
-var button = $(".upload-button");
-button.on("click", getValues);
-
 function getValues() {
+  console.log("Doing something");
   event.preventDefault();
   var name = $("#name-opportunity").val();
 
-  var category = $(".name-cat").val();
-  var type = $(".name-type").val();
-  var location = $("#location").val();
+  var category = $("#category").select2('data')[0].text;
+  var type = $("#type").select2('data')[0].text;
+
+  var country = $("#country").val();
+  var state = $("#state").val();
+  var city = $("#city").val();
 
   var dateRange = $("input[name='date-range']:checked").val();
-  if (dateRange == "Intermittent") {
-    dateRange = `${$("#start-date").val()} to ${$("#end-date").val()}`;
+  if (dateRange != "Ongoing") {
+    var startDate = `${$("#start-date").val()}`;
+    var endDate = `${$("#end-date").val()}`;
   } else {
-    dateRange = "Ongoing";
+    var startDate = "";
+    var endDate = "";
   }
 
   var deadline = $("input[name='deadline']:checked").val();
@@ -45,10 +48,10 @@ function getValues() {
     deadline = "None";
   }
   var cost = $("input[name='cost']:checked").val();
-  if (cost == "Yes") {
-    cost = $("#price").val();
-  } else {
+  if (cost == "No") {
     cost = "None";
+  } else {
+    cost = `${$("#price").val()} ${$("#currency-type").select2('data')[0].text}`;
   }
 
   var description = $("#description").val();
@@ -56,17 +59,25 @@ function getValues() {
   var link = $("#link").val();
 
   var opp_description = {
-//     name: name,
-//     category: category,
-//     type: type,
-//     location: location,
-//     dateRange: dateRange,
-//     deadline: deadline,
-//     cost: cost,
-//     description: description,
-//     link: link,
-//     visible: true
-//   };
+    name: name,
+    category: category,
+    type: type,
+    country: country,
+    state: state,
+    city: city,
+    startDate: startDate,
+    endDate: endDate,
+    deadline: deadline,
+    cost: cost,
+    description: description,
+    link: link,
+    visible: false
+  };
+
+  console.log(opp_description);
+  $("#upload-formid")[0].reset();
+
+}
 //
 //   fetch("/addOpps", {
 //     method: "POST",

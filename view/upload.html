@@ -19,10 +19,12 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
+    <script src="script.js"></script>
+    <script src="client.js"></script>
 
 </head>
 
-<body class="upload-page" onload="initialize()">
+<body class="upload-page">
     <div class=" navbar opp-nav">
         <div class="logo-container">
             <p class="name">
@@ -40,11 +42,11 @@
 
 
         <div class="upload-border">
-            <form class="upload-form">
+            <form class="upload-form" id="upload-formid">
                 <p class="upload-header">UPLOAD AN OPPORTUNITY NOW!</p>
 
-                <label class="upload-label">Name of Opportunity</label>
-                <input class="input" type="text" id="name-opportunity" required />
+                <label class="upload-label">Name</label>
+                <input class="input" type="text" placeholder="Name of Opportunity" id="name-opportunity" required />
 
 
 
@@ -52,37 +54,43 @@
                 <div class="dropdown">
                     <select class="js-example-basic-single select-class" id="category">
                         <option data-placeholder>Choose a Category</option>
-                        <option class="name-type" value="Summer Camp">Competition</option>
-                        <option class="name-type" value="Internship">Conference</option>
-                        <option class="name-type" value="Mentorship">CTF</option>
-                        <option class="name-type" value="Learning">Hackathon</option>
-                        <option class="name-type" value="Social">Internship</option>
-                        <option class="name-type" value="Hackathons">Leadership</option>
-                        <option class="name-type" value="CTF">Learning</option>
-                        <option class="name-type" value="Competition">Lecture</option>
-                        <option class="name-type" value="Other">Mentorship</option>
-                        <option class="name-type" value="Hackathons">Research</option>
-                        <option class="name-type" value="CTF">Scholarship</option>
-                        <option class="name-type" value="Competition">Summer Camp</option>
-                        <option class="name-type" value="Other">Tutoring</option>
-                        <option class="name-type" value="CTF">Volunteer</option>
-                        <option class="name-type" value="Competition">Webinar</option>
-                        <option class="name-type" value="Other">Other</option>
+                        <option class="name-cat" value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option class="name-cat" value="Biology">Biology</option>
+                        <option class="name-cat" value="Chemistry">Chemistry</option>
+                        <option class="name-cat" value="Computer Science">Computer Science</option>
+                        <option class="name-cat" value="Cyber Security">Cyber Security</option>
+                        <option class="name-cat" value="Engineering">Engineering</option>
+                        <option class="name-cat" value="Entrepreneurship">Entrepreneurship</option>
+                        <option class="name-cat" value="Environmental Science">Environmental Science</option>
+                        <option class="name-cat" value="Math">Math</option>
+                        <option class="name-cat" value="Medicine">Medicine</option>
+                        <option class="name-cat" value="Physics">Physics</option>
+                        <option class="name-cat" value="Robotics">Robotics</option>
+                        <option class="name-cat" value="Technology">Technology</option>
+                        <option class="name-cat" value="Other">Other</option>
                     </select>
                 </div>
 
                 <label value="type" class="upload-label">Type</label>
                 <div class="dropdown">
                     <select class="js-example-basic-single select-class" id="type">
-                        <option class="name-type" value="Summer Camp">Summer Camp</option>
-                        <option class="name-type" value="Internship">Internship</option>
-                        <option class="name-type" value="Mentorship">Mentorship</option>
-                        <option class="name-type" value="Learning">Learning</option>
-                        <option class="name-type" value="Social">Social</option>
-                        <option class="name-type" value="Hackathons">Hackathons</option>
-                        <option class="name-type" value="CTF">CTF</option>
-                        <option class="name-type" value="Competition">Competition</option>
-                        <option class="name-type" value="Other">Other</option>
+                      <option data-placeholder>Choose a Type</option>
+                      <option class="name-type" value="Competition">Competition</option>
+                      <option class="name-type" value="Conference">Conference</option>
+                      <option class="name-type" value="CTF">CTF</option>
+                      <option class="name-type" value="Hackathon">Hackathon</option>
+                      <option class="name-type" value="Internship">Internship</option>
+                      <option class="name-type" value="Leadership">Leadership</option>
+                      <option class="name-type" value="Learning">Learning</option>
+                      <option class="name-type" value="Lecture">Lecture</option>
+                      <option class="name-type" value="Mentorship">Mentorship</option>
+                      <option class="name-type" value="Research">Research</option>
+                      <option class="name-type" value="Scholarship">Scholarship</option>
+                      <option class="name-type" value="Summer Camp">Summer Camp</option>
+                      <option class="name-type" value="Tutoring">Tutoring</option>
+                      <option class="name-type" value="Volunteer">Volunteer</option>
+                      <option class="name-type" value="Webinar">Webinar</option>
+                      <option class="name-type" value="Other">Other</option>
                     </select>
                 </div>
 
@@ -109,12 +117,12 @@
 
                 <label class="upload-label">Application Deadline?</label>
 
-                <input type="radio" id="yes-date" name="deadline" class="deadline" value="Yes" />
-                <label class="radio-inline radio-top" for="yes-date">Yes</label>
+                <input type="radio" id="no-date" name="deadline" class="deadline" value="No" />
+                <label class="radio-inline radio-top" for="no-date">No</label>
 
                 <div class="upload-org">
-                    <input type="radio" id="no-date" name="deadline" class="deadline" value="No" />
-                    <label class="radio-inline" for="no-date">
+                    <input type="radio" id="yes-date" name="deadline" class="deadline" value="Yes" />
+                    <label class="radio-inline" for="yes-date">
                         <input type="date" class="datepicker" id="application-deadline" />
                     </label>
                 </div>
@@ -152,14 +160,14 @@
                 <input class="input" type="url" id="link" placeholder="Paste Link to Opportunity" required />
 
                 <div class="upload-bb">
-                    <button type="submit" class="upload-button">
+                    <button type="submit" class="upload-button" onclick="getValues()">
                         <div>Submit</div>
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+
 </body>
 
 </html>
