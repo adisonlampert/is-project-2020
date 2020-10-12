@@ -80,6 +80,13 @@ app.get("/getOpps", function (request, response) {
   });
 });
 
+app.get("/getPending", function (request, response) {
+	con.query("SELECT * from Pending", function (err, rows, fields) {
+		if (err) throw err;
+		response.send(JSON.stringify(rows));
+	});
+});
+
 app.post("/addOpps", (request, response) => {
 
   // DISALLOW_WRITE is an ENV variable that gets reset for new projects
