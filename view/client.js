@@ -78,18 +78,14 @@ function getValues() {
   $("#upload-formid")[0].reset();
 
 }
-//
-//   fetch("/addOpps", {
-//     method: "POST",
-//     body: JSON.stringify(opp_description),
-//     headers: { "Content-Type": "application/json" }
-//   })
-//     .then(res => res.json())
-//     .then(response => {
-//       console.log(JSON.stringify(response));
-//     });
-//   // get dream value and add it to the list
-//   oppsList.push(opp_description);
-//   localStorage.setItem("oppsList", JSON.stringify(oppsList));
-//
-// };
+
+fetch("/addOpps", {
+  method: "POST",
+  body: JSON.stringify(opp_description),
+  headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.json())
+  .then(response => {
+  console.log(JSON.stringify(response));
+  });
+};
