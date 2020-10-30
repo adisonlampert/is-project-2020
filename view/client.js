@@ -72,11 +72,21 @@ function getValues() {
     cost: cost,
     description: description,
     link: link,
-    visible: false
+    visible: 0
   };
 
   console.log(opp_description);
   $("#upload-formid")[0].reset();
+
+  fetch("/addOpps", {
+    method: "POST",
+    body: JSON.stringify(opp_description),
+    headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then(response => {
+    console.log(JSON.stringify(response));
+    });
 
 }
 
@@ -97,20 +107,9 @@ fetch("/getPending", {})
         cost: row.cost,
         description: row.description,
         link: row.link,
-        visible: true
+        visible: row.visibility
       });
       console.log("Pending db");
       console.log(pendingList);
     });
   });
-
-fetch("/addOpps", {
-  method: "POST",
-  body: JSON.stringify(opp_description),
-  headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(response => {
-  console.log(JSON.stringify(response));
-  });
-};
