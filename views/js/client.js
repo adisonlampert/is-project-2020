@@ -40,7 +40,5 @@ fetch("/getPending", {})
         link: row.link,
         visible: row.visibility
       });
-      console.log("Pending db");
-      console.log(pendingList);
     });
   });
