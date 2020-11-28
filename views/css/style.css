@@ -338,11 +338,14 @@ select {
 }
 
 .panel {
-  display: none;
   color: #1F1F1F;
   margin: 0px 30px;
   font-size: 14px;
   overflow: hidden;
+}
+
+.visible {
+  display: none;
 }
 
 .opp-right {
@@ -772,4 +775,28 @@ span.select2-selection.select2-selection--single {
   margin: 10px 0px 0px 0px;
   padding: 5px 5px;
   background: linear-gradient(to bottom right, #A19AC1, #EEAACD);
+}
+
+thead {
+  float: left;
+}
+
+thead th {
+  display: block;
+}
+
+tbody {
+  float: right;
+}
+
+tr {
+  float: left;
+}
+
+td {
+  display: block;
+}
+
+td:empty::after{
+  content: "\00a0";
 }

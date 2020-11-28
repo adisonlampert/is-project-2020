@@ -1,102 +1,74 @@
 var visible_list = JSON.parse(localStorage.getItem("pendingList"));
 
 function create_opp(n) {
-  if (visible_list[n].visible) {
-    $("<div/>", {
-      class: "single-container",
-      id: `sc-${n}`,
-      click: function() {
-        var itemID = $(this).attr("id");
-        var indexID = itemID.match(/\d+/);
-        var link = visible_list[indexID].link;
-        $(`#panel${indexID}`).html("");
+  $("<div/>", {
+    class: "single-container",
+    id: `sc-${n}`,
+    click: function() {
+      var itemID = $(this).attr("id");
+      var indexID = itemID.match(/\d+/);
+      var link = visible_list[indexID].link;
+      //$(`#panel${indexID}`).html("");
 
-        $("<p/>", {
-          class: "details-name",
-          text: visible_list[indexID].name
-        }).appendTo(`#panel${indexID}`);
+      $(`#panel${indexID}`).toggleClass("visible");
 
-        $("<p/>", {
-          class: "details",
-          text: visible_list[indexID].description
-        }).appendTo(`#panel${indexID}`);
+    }
+  }).appendTo(".admin-main");
 
-        $("<a/>", {
-          class: "details-link",
-          text: "Link",
-          click: function() {
-            var win = window.open(visible_list[indexID].link, '_blank');
-            if (win) {
-              //Browser has allowed it to be opened
-              win.focus();
-            } else {
-              //Browser has blocked it
-              alert('Please allow popups for this website');
-            }
-          }
-        }).appendTo(`#panel${indexID}`);
+  $("<div/>", {
+    class: "panel visible",
+    id: `panel${n}`,
+  }).appendTo(".admin-main");
 
-        $(`#panel${indexID}`).toggle();
+  $("<table/>", {
+    class: `table${n}`,
+  }).appendTo(`#panel${n}`);
+
+  $("<div/>", {
+    id: `opp-left${n}`,
+    class: "opp-left",
+  }).appendTo(`#sc-${n}`);
+
+  $("<p/>", {
+    class: "opp-name",
+    text: visible_list[n].name
+  }).appendTo(`#opp-left${n}`);
+}
+
+function generateTableHead(table, data) {
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  for (let key of data) {
+    let th = document.createElement("th");
+    let text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data, rowNum) {
+  for (var i = 0; i < visible_list.length; i++) {
+    if(i == rowNum){
+      let row = table.insertRow();
+      for (key in visible_list[i]) {
+        let cell = row.insertCell();
+        let text = document.createTextNode(visible_list[i][key]);
+        cell.appendChild(text);
       }
-    }).appendTo(".admin-main");
-
-    $("<div/>", {
-      class: "panel",
-      id: `panel${n}`,
-    }).appendTo(".admin-main");
-
-    $("<div/>", {
-      id: `opp-left${n}`,
-      class: "opp-left",
-    }).appendTo(`#sc-${n}`);
-
-    $("<div/>", {
-      id: `opp-right${n}`,
-      class: "opp-right",
-    }).appendTo(`#sc-${n}`);
-
-    $("<div/>", {
-      class: "tags",
-      id: `tags-${n}`
-    }).appendTo(`#opp-left${n}`);
-
-    $("<p/>", {
-      class: "cat-name",
-      text: visible_list[n].category
-    }).appendTo(`#tags-${n}`);
-
-    $("<p/>", {
-      class: "type-name",
-      text: visible_list[n].type
-    }).appendTo(`#tags-${n}`);
-
-    $("<p/>", {
-      class: "opp-name",
-      text: visible_list[n].name
-    }).appendTo(`#opp-left${n}`);
-
-    $("<p/>", {
-      class: "loc-info",
-      text: `Location: ${visible_list[n].location}`
-    }).appendTo(`#opp-left${n}`);
-
-    $("<p/>", {
-      class: "app-info",
-      text: `Application Deadline: ${visible_list[n].deadline}`
-    }).appendTo(`#opp-right${n}`);
-
-    $("<p/>", {
-      class: "date-info",
-      text: `Date: ${visible_list[n].dateRange}`
-    }).appendTo(`#opp-right${n}`);
-
+    }
   }
 }
 
 function page_ready(){
   for (var n = 0; n < visible_list.length; n++) {
     create_opp(n);
+    var table = $("table")[n];
+    var data = Object.keys(visible_list[0]);
+    generateTableHead(table, data);
+    generateTable(table, visible_list, n);
+
   }
+
 }
 
 $(document).ready(page_ready());
