@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../partials/head.ejs'); -%>
+
+    <body class="upload-page">
+
+        <%- include('../partials/nav'); -%>
+
+        <div class="upload-main main">
+            <div class="upload-border">
+                <form class="upload-form" id="upload-formid" action="upload" method="POST">
+                    <p class="upload-header">UPLOAD AN OPPORTUNITY NOW!</p>
+
+                    <label class="upload-label">Name</label>
+                    <input class="input" type="text" placeholder="Name of Opportunity" id="name-opportunity" name="name" required />
+
+                    <label class="upload-label" value="type">Category</label>
+                    <div class="dropdown">
+                        <select class="js-example-basic-single select-class" id="category" name="category">
+                            <option data-placeholder>Choose a Category</option>
+                            <option class="name-cat" value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option class="name-cat" value="Biology">Biology</option>
+                            <option class="name-cat" value="Chemistry">Chemistry</option>
+                            <option class="name-cat" value="Computer Science">Computer Science</option>
+                            <option class="name-cat" value="Cyber Security">Cyber Security</option>
+                            <option class="name-cat" value="Engineering">Engineering</option>
+                            <option class="name-cat" value="Entrepreneurship">Entrepreneurship</option>
+                            <option class="name-cat" value="Environmental Science">Environmental Science</option>
+                            <option class="name-cat" value="Math">Math</option>
+                            <option class="name-cat" value="Medicine">Medicine</option>
+                            <option class="name-cat" value="Physics">Physics</option>
+                            <option class="name-cat" value="Robotics">Robotics</option>
+                            <option class="name-cat" value="Technology">Technology</option>
+                            <option class="name-cat" value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <label value="type" class="upload-label">Type</label>
+                    <div class="dropdown">
+                        <select class="js-example-basic-single select-class" id="type" name="type">
+                          <option data-placeholder>Choose a Type</option>
+                          <option class="name-type" value="Competition">Competition</option>
+                          <option class="name-type" value="Conference">Conference</option>
+                          <option class="name-type" value="CTF">CTF</option>
+                          <option class="name-type" value="Hackathon">Hackathon</option>
+                          <option class="name-type" value="Internship">Internship</option>
+                          <option class="name-type" value="Leadership">Leadership</option>
+                          <option class="name-type" value="Learning">Learning</option>
+                          <option class="name-type" value="Lecture">Lecture</option>
+                          <option class="name-type" value="Mentorship">Mentorship</option>
+                          <option class="name-type" value="Research">Research</option>
+                          <option class="name-type" value="Scholarship">Scholarship</option>
+                          <option class="name-type" value="Summer Camp">Summer Camp</option>
+                          <option class="name-type" value="Tutoring">Tutoring</option>
+                          <option class="name-type" value="Volunteer">Volunteer</option>
+                          <option class="name-type" value="Webinar">Webinar</option>
+                          <option class="name-type" value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <label class="upload-label">Location</label>
+                    <input class="input" type="text" id="country" placeholder="Country (Leave empty if not applicable)" name="country" />
+                    <input class="input" type="text" id="state" placeholder="State (Leave empty if not applicable)" name="state" />
+                    <input class="input" type="text" id="city" placeholder="City (Leave empty if not applicable)" name="city" />
+
+                    <label class="upload-label">Start/End Date</label>
+                    <div class="upload-org">
+                        <input type="radio" id="ongoing" value="Ongoing" name="date-range" />
+                        <label class="radio-inline radio-top" for="ongoing">
+                            Ongoing</label>
+                    </div>
+
+                    <div class="upload-org">
+                        <input type="radio" id="intermittent" value="Intermittent" name="date-range" />
+
+                        <label class="radio-inline " for="intermittent">
+                            <input id="start-date" class="datepicker" type="date" name="startDate"/>
+                            <input id="end-date" class="datepicker" type="date" name="endDate" />
+                        </label>
+                    </div>
+
+                    <label class="upload-label">Application Deadline?</label>
+
+                    <input type="radio" id="no-date" class="deadline" value="No" />
+                    <label class="radio-inline radio-top" for="no-date">No</label>
+
+                    <div class="upload-org">
+                        <input type="radio" id="yes-date"class="deadline" value="Yes" />
+                        <label class="radio-inline" for="yes-date">
+                            <input type="date" class="datepicker" id="application-deadline" name="deadline" />
+                        </label>
+                    </div>
+
+                    <label class="upload-label">Does it cost money?</label>
+
+                    <input type="radio" id="no-cost" value="No Cost" />
+                    <label class="radio-inline radio-top" for="no-cost">
+                        No</label>
+
+                    <div class="upload-org">
+                        <input type="radio" id="yes-cost" value="Yes Cost" />
+
+                        <label class="radio-inline" for="yes-cost">
+                            <input type="number" step="any" id="price" class="input currency-input" placeholder="Price" name="cost" />
+                        </label>
+                        <div class="currency-dropdown">
+                            <select class="js-example-basic-single select-class" id="currency-type" name="currency">
+                                <option class="currency-type" value="US dollar (USD)">US dollar (USD)</option>
+                                <option class="currency-type" value="Euro (EUR)">Euro (EUR)</option>
+                                <option class="currency-type" value="Pound sterling (GBP)">Pound sterling (GBP)</option>
+                                <option class="currency-type" value="Australian dollar (AUD)">Australian dollar (AUD)</option>
+                                <option class="currency-type" value="Canadian dollar (CAD)">Canadian dollar (CAD)</option>
+                                <option class="currency-type" value="New Zealand dollar (NZD)">New Zealand dollar (NZD)</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <label class="upload-label">Description</label>
+                    <textarea class="input" rows="4" id="description" name="description" required></textarea>
+
+                    <label class="upload-label">Link</label>
+                    <input class="input" type="url" id="link" name="link" placeholder="Paste Link to Opportunity" required />
+
+                    <div class="upload-bb">
+                        <button type="submit" class="upload-button">
+                            <div>Submit</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <%- include('../partials/footer.ejs'); -%>
+
+        <%- include('../partials/scripts.ejs'); -%>
+
+    </body>
+</html>
