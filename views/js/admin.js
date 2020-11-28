@@ -38,12 +38,12 @@ function create_opp(n) {
 
         $(`#panel${indexID}`).toggle();
       }
-    }).appendTo(".opp-main");
+    }).appendTo(".admin-main");
 
     $("<div/>", {
       class: "panel",
       id: `panel${n}`,
-    }).appendTo(".opp-main");
+    }).appendTo(".admin-main");
 
     $("<div/>", {
       id: `opp-left${n}`,
