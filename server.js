@@ -12,13 +12,8 @@ const fs = require("fs");
 const routes = require('./routes/index.js');
 const partials = require('express-partials');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 var LocalStrategy   = require('passport-local').Strategy;
-
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-routes(app);
-app.use(partials());
 
 app.use(express.static("views"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +23,11 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+routes(app);
+app.use(partials());
 
 // init db
 var mysql = require('mysql');
