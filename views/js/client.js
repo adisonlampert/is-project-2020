@@ -40,5 +40,6 @@ fetch("/getPending", {})
         link: row.link,
         visible: row.visibility
       });
+      localStorage.setItem("pendingList", JSON.stringify(pendingList));
     });
   });
