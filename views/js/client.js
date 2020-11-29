@@ -36,6 +36,7 @@ fetch("/getPending", {})
         endDate: row.endDate,
         deadline: row.deadline,
         cost: row.cost,
+        currency: row.currency,
         description: row.description,
         link: row.link,
         visible: row.visibility
