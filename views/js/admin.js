@@ -28,10 +28,27 @@ function create_pending(n) {
     class: "opp-left",
   }).appendTo(`#sc-${n}`);
 
+  $("<div/>", {
+    id: `opp-right${n}`,
+    class: "opp-right",
+  }).appendTo(`#sc-${n}`);
+
   $("<p/>", {
     class: "opp-name",
     text: pending[n].name
   }).appendTo(`#opp-left${n}`);
+
+  $("<i />", {
+    class:"trigger fa fa-edit fa-lg",
+    click: function() {
+      toggleModal(n);
+    }
+  }).appendTo(`#opp-right${n}`);
+
+  $("<i />", {
+    class:"	fa fa-close fa-lg delete",
+    href: `/deletePending/${n+1}`
+  }).appendTo(`#opp-right${n}`)
 }
 
 function create_approved(n) {

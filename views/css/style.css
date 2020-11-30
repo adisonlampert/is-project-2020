@@ -817,6 +817,7 @@ td:empty::after{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: baseline;
   font-size: 14px;
   margin-bottom: 10px;
   margin-left: 30px;
@@ -918,4 +919,13 @@ td:empty::after{
 
 .modalHead {
   margin: 4px 0px 11px 0px;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+.delete {
+  padding-left: 10px;
+  cursor: pointer;
 }

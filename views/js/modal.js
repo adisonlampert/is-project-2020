@@ -2,15 +2,14 @@ var pending = JSON.parse(localStorage.getItem("pendingList"));
 var approved = JSON.parse(localStorage.getItem("oppsList"));
 
 var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".trigger");
 
-function create_modal() {
+function create_modal(number) {
   $(".modal-content").html("");
   $("<span/>", {
     class: "close-button",
     text: "x",
     click: function() {
-      toggleModal();
+      toggleModal(number);
     }
   }).appendTo(".modal-content");
   $("<table/>", {
@@ -19,7 +18,7 @@ function create_modal() {
   var table = $(".modalTable")[0];
   var data = Object.keys(pending[0]);
   generateModalTableHead(table, data);
-  generateModalTable(table, pending, 0);
+  generateModalTable(table, pending, number);
   $("<i/>", {
     class: "fa fa-check-square"
   }).appendTo(".modal-content");
@@ -53,16 +52,9 @@ function generateModalTable(table, data, rowNum) {
   }
 }
 
-function toggleModal() {
-    create_modal();
+function toggleModal(num) {
+    create_modal(num);
     modal.classList.toggle("show-modal");
-}
+    event.stopPropagation();
 
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
 }
-
-trigger.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
