@@ -124,6 +124,28 @@ app.post("/deletePending/:id", (request, response) => {
 	//}
 });
 
+app.post("/deleteOpportunities/:id", (request, response) => {
+
+	var user = { id: request.params.id }
+
+	//if (req.session.loggedin) {
+  con.query('DELETE FROM Opportunities WHERE ?', user, function (err, resp) {
+		if (err) {
+      //request.flash('error', err)
+      // redirect to users list page
+      response.redirect('/admin')
+  	}
+		else {
+      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
+      // redirect to users list page
+      response.redirect('/admin')
+		}
+	})
+  //} else {
+	//  return res.send('Please login to view this page!');
+	//}
+});
+
 
 function userIsAllowed(callback, status) {
   // this function would contain your logic, presumably asynchronous,
