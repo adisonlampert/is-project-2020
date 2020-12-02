@@ -923,3 +923,7 @@ td:empty::after{
 .admin-left {
   width: 80%;
 }
+
+#admin-header {
+  text-align: center;
+}
