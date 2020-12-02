@@ -8,7 +8,7 @@ function create_pending(n) {
   }).appendTo(".admin-container");
 
   $("<div/>", {
-    class: "panel-stem visible",
+    class: "panel-admin visible",
     id: `panel${n}`,
   }).appendTo(".admin-container");
 
@@ -72,7 +72,7 @@ function create_approved(n) {
   }).appendTo(".published-container");
 
   $("<div/>", {
-    class: "panel visible",
+    class: "panel-admin visible",
     id: `panel${n}`,
   }).appendTo(".published-container");
 

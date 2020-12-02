@@ -342,6 +342,13 @@ select {
 
 .panel-stem {
   color: #1F1F1F;
+}
+
+.panel-admin {
+  color: #EBEBEB;
+}
+
+.panel-stem, .panel-admin {
   margin: 0px 30px;
   font-size: 14px;
   overflow: hidden;
@@ -835,7 +842,8 @@ td:empty::after{
   flex: 4 1;
   height: 500px;
   overflow-y: auto;
-  background-color: #EBEBEB;
+  background-color: #333333;
+  color: #EBEBEB;
   margin-top: 20px;
   border-radius: 20px;
   margin-left: 20px;
@@ -849,21 +857,6 @@ td:empty::after{
    max-width:400px;
    display: block;
    white-space: nowrap;
-}
-
-.delete-btn {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  flex: 0 1;
-}
-
-/* Darker background on mouse-over */
-.delete-btn:hover {
-  background-color: RoyalBlue;
 }
 
 .admin-main {
@@ -926,4 +919,28 @@ td:empty::after{
 
 #admin-header {
   text-align: center;
+}
+
+.admin-body {
+  background-color: #1F1F1F;
+}
+
+::-webkit-scrollbar-track
+{
+	border: 5px solid #333333;
+	// border color does not support transparent on scrollbar
+	// border-color: transparent;
+	background-color: #b2bec3;
+}
+
+::-webkit-scrollbar
+{
+	width: 15px;
+	background-color: #dfe6e9;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-image: linear-gradient(to bottom, #919dc5, #eeaacd);
+	border-radius: 10px;
 }
