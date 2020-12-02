@@ -925,7 +925,7 @@ td:empty::after{
   background-color: #1F1F1F;
 }
 
-::-webkit-scrollbar-track
+div::-webkit-scrollbar-track
 {
 	border: 5px solid #333333;
 	// border color does not support transparent on scrollbar
@@ -933,13 +933,13 @@ td:empty::after{
 	background-color: #b2bec3;
 }
 
-::-webkit-scrollbar
+div::-webkit-scrollbar
 {
 	width: 15px;
 	background-color: #dfe6e9;
 }
 
-::-webkit-scrollbar-thumb
+div::-webkit-scrollbar-thumb
 {
 	background-image: linear-gradient(to bottom, #919dc5, #eeaacd);
 	border-radius: 10px;
