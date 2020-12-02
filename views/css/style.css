@@ -1,7 +1,7 @@
 /* styles */
 /* called by your view template */
 
-.navbar {
+.navbar-stem {
   background-color: #1F1F1F;
   width: 100%;
   margin-top: 0px;
@@ -26,13 +26,13 @@
   height: 6px;
   z-index: 100000;
 }
-.navbar-options {
+.navbar-options-stem {
   display: flex;
   flex-direction: row;
   margin-right: 10px;
 }
 
-.logo-container {
+.logo-container-stem {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -44,21 +44,21 @@
   margin-right: -50px;
 }
 
-.name {
+.name-stem {
   color: white;
   margin-top: 30px;
   font-size: 25px;
   margin-left: 40px;
 }
 
-.tab {
+.tab-stem {
   padding: 30px;
   margin-top: 20px;
   text-decoration: none;
   color: white;
 }
 
-.tab:hover {
+.tab-stem:hover {
   background-image: linear-gradient(to right, #919dc5, #eeaacd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -227,6 +227,10 @@ textarea {
   margin-bottom: 20px;
 }
 
+td #country, td #state {
+  margin-bottom: 0px;
+}
+
 .upload-button:hover {
   font-weight: bold;
   background: none;
@@ -271,7 +275,7 @@ select {
   margin-right: 10px;
 }
 
-.tags {
+.tags-stem {
   color: black;
   display: flex;
   flex-direction: row;
@@ -312,12 +316,11 @@ select {
 
 .opp-name {
   margin: 10px 0px;
-  color: white;
   font-weight: bold;
   font-size: 17px;
 }
 
-.single-container {
+.single-container-stem {
   margin-top: 20px;
   background-color: #1F1F1F;
   color: white;
@@ -328,16 +331,16 @@ select {
   margin-bottom: 10px;
   margin-left: 30px;
   margin-right: 30px;
-  padding-left: 40px;
+  padding: 20px 10px 10px 30px;
   border-radius: 10px;
   transition: 0.4s;
 }
 
-.active, .single-container:hover {
+.active, .single-container-stem:hover {
   cursor: pointer;
 }
 
-.panel {
+.panel-stem {
   color: #1F1F1F;
   margin: 0px 30px;
   font-size: 14px;
@@ -803,7 +806,6 @@ tr {
 
 td {
   display: block;
-  overflow-y: auto;
 }
 
 td:empty::after{
@@ -812,8 +814,10 @@ td:empty::after{
 
 .single-admin-container {
   margin-top: 20px;
-  background-color: #1F1F1F;
-  color: white;
+  background-image: linear-gradient(to right, #919dc5, #eeaacd);
+  font-weight: bold;
+  box-shadow: 0px 5px 5px;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -827,21 +831,24 @@ td:empty::after{
   transition: 0.4s;
 }
 
-.admin-container {
+.admin-container, .published-container {
   flex: 4 1;
+  height: 500px;
+  overflow-y: auto;
+  background-color: #EBEBEB;
+  margin-top: 20px;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
 }
 
 .table-span {
    overflow:hidden;
-   margin-bottom: -0.7px;
    padding: 0px;
    max-width:400px;
    display: block;
    white-space: nowrap;
-}
-
-.published-container {
-  flex: 4 1;
 }
 
 .delete-btn {
@@ -867,28 +874,11 @@ td:empty::after{
   justify-content: flex-start;
 }
 
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 48rem;
-    border-radius: 0.5rem;
-}
+.modal, .modal-body {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
 .close-button {
     float: right;
     width: 1.5rem;
@@ -898,27 +888,27 @@ td:empty::after{
     border-radius: 0.25rem;
     background-color: lightgray;
 }
+
 .close-button:hover {
     background-color: darkgray;
 }
-.show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
-
-.modalTable {
-  overflow-y: auto;
-}
 
 .modalTextArea {
-  width: 600px;
-  height: 20px;
+  width: 400px;
+  height: 50px;
 }
 
 .modalHead {
-  margin: 4px 0px 11px 0px;
+  height: 55.5px;
+  vertical-align: middle;
+}
+
+.th-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .trigger {
@@ -928,4 +918,8 @@ td:empty::after{
 .delete {
   padding-left: 10px;
   cursor: pointer;
+}
+
+.admin-left {
+  width: 80%;
 }

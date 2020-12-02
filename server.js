@@ -95,6 +95,8 @@ app.post("/upload", (request, response) => {
 		link: request.body.link,
 		visibility: 0,
 	}
+	console.log(createUpload);
+
   con.query('INSERT INTO Pending SET ?', createUpload, function (err, resp) {
 		if (err) throw err;
     // if there are no errors send an OK message.
@@ -103,20 +105,18 @@ app.post("/upload", (request, response) => {
 });
 
 app.post("/deletePending/:id", (request, response) => {
-
 	var user = { id: request.params.id }
-
 	//if (req.session.loggedin) {
   con.query('DELETE FROM Pending WHERE ?', user, function (err, resp) {
 		if (err) {
       //request.flash('error', err)
       // redirect to users list page
-      response.redirect('/admin')
+      response.render('pages/admin')
   	}
 		else {
       //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
       // redirect to users list page
-      response.redirect('/admin')
+      response.redirect(request.get('referer'));
 		}
 	})
   //} else {
@@ -133,17 +133,55 @@ app.post("/deleteOpportunities/:id", (request, response) => {
 		if (err) {
       //request.flash('error', err)
       // redirect to users list page
-      response.redirect('/admin')
+      response.render('pages/admin')
   	}
 		else {
       //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
       // redirect to users list page
-      response.redirect('/admin')
+      response.redirect(request.get('referer'));
 		}
 	})
   //} else {
 	//  return res.send('Please login to view this page!');
 	//}
+});
+
+app.post("/updatePending", (request, response) => {
+
+	console.log("I got called");
+
+	var createChange = {
+		name: request.body.name,
+		category: request.body.category,
+		type: request.body.type,
+		country: request.body.country,
+		state: request.body.state,
+		city: request.body.city,
+		startDate: request.body.startDate,
+		endDate: request.body.endDate,
+		deadline: request.body.deadline,
+		cost: request.body.cost,
+		currency: request.body.currency,
+		description: request.body.description,
+		link: request.body.link,
+		visibility: 1,
+	}
+
+	console.log(createChange);
+	var user = { id: request.body.id }
+
+	con.query('UPDATE Pending SET ? WHERE ?', [createChange, user], function (err, resp) {
+		if (err) {
+      request.flash('error', err)
+      // redirect to users list page
+      response.render('pages/home')
+  	}
+		else {
+      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
+      // redirect to users list page
+      response.redirect(request.get('referer'));
+		}
+	});
 });
 
 

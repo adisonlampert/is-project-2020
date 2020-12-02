@@ -15,7 +15,8 @@ fetch("/getOpps", {})
         cost: row.cost,
         description: row.description,
         link: row.link,
-        visible: true
+        visible: true,
+        id: row.id
       });
       localStorage.setItem("oppsList", JSON.stringify(oppsList));
     });

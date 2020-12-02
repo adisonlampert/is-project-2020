@@ -4,18 +4,11 @@ var approved = JSON.parse(localStorage.getItem("oppsList"));
 function create_pending(n) {
   $("<div/>", {
     class: "single-admin-container",
-    id: `sc-${n}`,
-    click: function() {
-      var itemID = $(this).attr("id");
-      var indexID = itemID.match(/\d+/);
-
-      $(`#panel${indexID}`).toggleClass("visible");
-
-    }
+    id: `sc-${n}`
   }).appendTo(".admin-container");
 
   $("<div/>", {
-    class: "panel visible",
+    class: "panel-stem visible",
     id: `panel${n}`,
   }).appendTo(".admin-container");
 
@@ -25,7 +18,14 @@ function create_pending(n) {
 
   $("<div/>", {
     id: `opp-left${n}`,
-    class: "opp-left",
+    class: "opp-left admin-left",
+    click: function() {
+      var itemID = $(this).attr("id");
+      var indexID = itemID.match(/\d+/);
+
+      $(`#panel${indexID}`).toggleClass("visible");
+
+    }
   }).appendTo(`#sc-${n}`);
 
   $("<div/>", {
@@ -40,15 +40,22 @@ function create_pending(n) {
 
   $("<i />", {
     class:"trigger fa fa-edit fa-lg",
+    id: `trigger${n}`,
+    onload: function() {
+      $(this).attr("data-toggle", "modal");
+      $(this).attr("data-target", "#editModal");
+    },
     click: function() {
       toggleModal(n);
     }
   }).appendTo(`#opp-right${n}`);
 
   $("<i />", {
-    class:"	fa fa-close fa-lg delete",
-    href: `/deletePending/${n+1}`
-  }).appendTo(`#opp-right${n}`)
+    class:"fa fa-close fa-lg delete",
+    click: function() {
+      deletePending(n);
+    }
+  }).appendTo(`#opp-right${n}`);
 }
 
 function create_approved(n) {
@@ -82,6 +89,18 @@ function create_approved(n) {
     class: "opp-name",
     text: approved[n].name
   }).appendTo(`#opp-left${n}`);
+
+  $("<div/>", {
+    id: `opp-right${n}`,
+    class: "opp-right",
+  }).appendTo(`#sc-${n}`);
+
+  $("<i />", {
+    class:"fa fa-close fa-lg delete",
+    click: function() {
+      deleteOpportunities(n);
+    }
+  }).appendTo(`#opp-right${n}`);
 }
 
 function generateTableHead(table, data) {
@@ -119,7 +138,7 @@ function page_ready(){
     generateTableHead(table, data);
     generateTable(table, pending, n);
   }
-  for (var n = pending.length; n < pending.length+approved.length-2; n++) {
+  for (var n = pending.length; n < pending.length+approved.length-3; n++) {
     create_approved(n);
     var table = $("table")[n];
     var data = Object.keys(approved[0]);

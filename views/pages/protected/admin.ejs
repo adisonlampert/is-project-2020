@@ -5,16 +5,20 @@
 
     <body>
 
-      <form method="post" action="/deletePending/1" style="float:right">
-         <input type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
-         <input type="hidden" name="_method" value="DELETE" />
-     </form>
-
-      <div class="modal">
+      <div id="editModal" class="modal fade" role='dialog'>
+        <div class="modal-dialog">
           <div class="modal-content">
-              <span class="close-button">×</span>
-              <div class="modal-message"><p>Hello</p></div>
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Edit Pending Upload</h4>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-default" id="update" data-dismiss="modal">Update</button>
+              </div>
           </div>
+        </div>
       </div>
 
       <div class="admin-main">
@@ -22,9 +26,6 @@
         <button class="delete-btn"><i class="fa fa-close"></i></button>
         <div class="published-container"></div>
       </div>
-
-
-
 
     <%- include('../../partials/footer.ejs'); -%>
 

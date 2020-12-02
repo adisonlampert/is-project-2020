@@ -13,7 +13,7 @@ function sortT(sortType, sortName) {
 function create_opp(n) {
   if (visible_list[n].visible) {
     $("<div/>", {
-      class: "single-container",
+      class: "single-container-stem",
       id: `sc-${n}`,
       click: function() {
         var itemID = $(this).attr("id");
@@ -47,12 +47,14 @@ function create_opp(n) {
         }).appendTo(`#panel${indexID}`);
 
         $(`#panel${indexID}`).toggle();
+
       }
     }).appendTo(".opp-main");
 
     $("<div/>", {
-      class: "panel",
+      class: "panel-stem",
       id: `panel${n}`,
+      style: "display: none",
     }).appendTo(".opp-main");
 
     $("<div/>", {
@@ -66,7 +68,7 @@ function create_opp(n) {
     }).appendTo(`#sc-${n}`);
 
     $("<div/>", {
-      class: "tags",
+      class: "tags-stem",
       id: `tags-${n}`
     }).appendTo(`#opp-left${n}`);
 
