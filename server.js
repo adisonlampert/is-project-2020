@@ -35,7 +35,8 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "testdb"
+  database: "testdb",
+	multipleStatements: true
 });
 
 con.connect(function(err) {
@@ -95,7 +96,6 @@ app.post("/upload", (request, response) => {
 		link: request.body.link,
 		visibility: 0,
 	}
-	console.log(createUpload);
 
   con.query('INSERT INTO Pending SET ?', createUpload, function (err, resp) {
 		if (err) throw err;
@@ -203,10 +203,11 @@ app.post("/movePending", (request, response) => {
 
 	var user = { id: request.body.id }
 
-	con.query('DELETE FROM Pending WHERE ? UNION INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
+	con.query('DELETE FROM Pending WHERE ?; INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
 		if (err) {
-      request.flash('error', err)
+      //request.flash('error', err)
       // redirect to users list page
+			console.log(err)
       response.render('pages/home')
   	}
 		else {
