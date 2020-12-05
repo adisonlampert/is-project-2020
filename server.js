@@ -41,11 +41,11 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  //var sql = "CREATE TABLE Pending (id INT AUTO_INCREMENT PRIMARY KEY, name TEXT, category TEXT, type TEXT, country TEXT, state TEXT, city TEXT, startDate TEXT, endDate TEXT, deadline TEXT, cost TEXT, currency TEXT, description TEXT, link TEXT, visibility BOOLEAN)";
+  // var sql = "CREATE TABLE Opportunities (id INT AUTO_INCREMENT PRIMARY KEY, name TEXT, category TEXT, type TEXT, country TEXT, state TEXT, city TEXT, startDate TEXT, endDate TEXT, deadline TEXT, cost TEXT, currency TEXT, description TEXT, link TEXT, visibility BOOLEAN)";
   // con.query(sql, function (err, result) {
   //  if (err) throw err;
   //  console.log("1 record inserted");
-  //});
+  // });
 });
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
