@@ -919,6 +919,7 @@ td:empty::after{
 
 #admin-header {
   text-align: center;
+  color: #EBEBEB;
 }
 
 .admin-body {
@@ -930,13 +931,13 @@ div::-webkit-scrollbar-track
 	border: 5px solid #333333;
 	// border color does not support transparent on scrollbar
 	// border-color: transparent;
-	background-color: #b2bec3;
+	background-color: #EBEBEB;
 }
 
 div::-webkit-scrollbar
 {
 	width: 15px;
-	background-color: #dfe6e9;
+	background-color: #EBEBEB;
 }
 
 div::-webkit-scrollbar-thumb
