@@ -61,14 +61,7 @@ function create_pending(n) {
 function create_approved(n) {
   $("<div/>", {
     class: "single-admin-container",
-    id: `sc-${n}`,
-    click: function() {
-      var itemID = $(this).attr("id");
-      var indexID = itemID.match(/\d+/);
-
-      $(`#panel${indexID}`).toggleClass("visible");
-
-    }
+    id: `sc-${n}`
   }).appendTo(".published-container");
 
   $("<div/>", {
@@ -82,23 +75,30 @@ function create_approved(n) {
 
   $("<div/>", {
     id: `opp-left${n}`,
-    class: "opp-left",
-  }).appendTo(`#sc-${n}`);
+    class: "opp-left admin-left",
+    click: function() {
+      var itemID = $(this).attr("id");
+      var indexID = itemID.match(/\d+/);
 
-  $("<p/>", {
-    class: "opp-name",
-    text: approved[n].name
-  }).appendTo(`#opp-left${n}`);
+      $(`#panel${indexID}`).toggleClass("visible");
+
+    }
+  }).appendTo(`#sc-${n}`);
 
   $("<div/>", {
     id: `opp-right${n}`,
     class: "opp-right",
   }).appendTo(`#sc-${n}`);
 
+  $("<p/>", {
+    class: "opp-name",
+    text: approved[n-pending.length].name
+  }).appendTo(`#opp-left${n}`);
+
   $("<i />", {
     class:"fa fa-close fa-lg delete",
     click: function() {
-      deleteOpportunities(n);
+      deleteOpportunities(n-pending.length);
     }
   }).appendTo(`#opp-right${n}`);
 }
@@ -138,12 +138,12 @@ function page_ready(){
     generateTableHead(table, data);
     generateTable(table, pending, n);
   }
-  for (var n = pending.length; n < pending.length+approved.length-3; n++) {
+  for (var n = pending.length; n < pending.length+approved.length; n++) {
     create_approved(n);
     var table = $("table")[n];
     var data = Object.keys(approved[0]);
     generateTableHead(table, data);
-    generateTable(table, approved, n);
+    generateTable(table, approved, n-pending.length);
   }
 }
 
