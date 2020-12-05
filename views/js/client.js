@@ -9,13 +9,17 @@ fetch("/getOpps", {})
         name: row.name,
         category: row.category,
         type: row.type,
-        location: row.location,
-        dateRange: row.dateRange,
+        country: row.country,
+        state: row.state,
+        city: row.city,
+        startDate: row.startDate,
+        endDate: row.endDate,
         deadline: row.deadline,
         cost: row.cost,
+        currency: row.currency,
         description: row.description,
         link: row.link,
-        visible: true,
+        visible: row.visibility,
         id: row.id
       });
       localStorage.setItem("oppsList", JSON.stringify(oppsList));
