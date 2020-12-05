@@ -148,8 +148,6 @@ app.post("/deleteOpportunities/:id", (request, response) => {
 
 app.post("/updatePending", (request, response) => {
 
-	console.log("I got called");
-
 	var createChange = {
 		name: request.body.name,
 		category: request.body.category,
@@ -164,7 +162,7 @@ app.post("/updatePending", (request, response) => {
 		currency: request.body.currency,
 		description: request.body.description,
 		link: request.body.link,
-		visibility: 1,
+		visibility: request.body.visibility,
 	}
 
 	console.log(createChange);
@@ -184,6 +182,40 @@ app.post("/updatePending", (request, response) => {
 	});
 });
 
+app.post("/movePending", (request, response) => {
+
+	var createChange = {
+		name: request.body.name,
+		category: request.body.category,
+		type: request.body.type,
+		country: request.body.country,
+		state: request.body.state,
+		city: request.body.city,
+		startDate: request.body.startDate,
+		endDate: request.body.endDate,
+		deadline: request.body.deadline,
+		cost: request.body.cost,
+		currency: request.body.currency,
+		description: request.body.description,
+		link: request.body.link,
+		visibility: 1,
+	}
+
+	var user = { id: request.body.id }
+
+	con.query('DELETE FROM Pending WHERE ? UNION INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
+		if (err) {
+      request.flash('error', err)
+      // redirect to users list page
+      response.render('pages/home')
+  	}
+		else {
+      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
+      // redirect to users list page
+      response.redirect(request.get('referer'));
+		}
+	});
+});
 
 function userIsAllowed(callback, status) {
   // this function would contain your logic, presumably asynchronous,
