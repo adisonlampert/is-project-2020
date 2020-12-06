@@ -1,5 +1,10 @@
 /* styles */
 /* called by your view template */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 
 .navbar-stem {
   background-color: #1F1F1F;
@@ -55,7 +60,8 @@
   padding: 30px;
   margin-top: 20px;
   text-decoration: none;
-  color: white;
+  color: #EBEBEB;
+  font-weight: 700;
 }
 
 .tab-stem:hover {
@@ -72,7 +78,7 @@ body {
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .main {
@@ -242,7 +248,7 @@ label {
 }
 
 .type-label {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
 }
 .datepicker {
@@ -277,7 +283,8 @@ select {
 }
 
 .tags-stem {
-  color: black;
+  color: #1F1F1F;
+  font-weight: 600;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -318,14 +325,15 @@ select {
 
 .opp-name {
   margin: 10px 0px;
-  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
   font-size: 17px;
 }
 
 .single-container-stem {
   margin-top: 20px;
   background-color: #1F1F1F;
-  color: white;
+  color: #EBEBEB;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -364,7 +372,6 @@ select {
   text-align: right;
   margin-right: 30px;
 }
-
 
 .opp-main {
   width: 100%;
