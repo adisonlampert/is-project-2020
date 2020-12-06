@@ -635,8 +635,8 @@ span.select2-selection.select2-selection--single {
 .container-opp .checkmark:after {
   left: 7px;
   top: 4.5px;
-  width: 3px;
-  height: 6px;
+  width: 6px;
+  height: 9px;
   border: solid white;
   border-width: 0 2.5px 2.5px 0;
   -webkit-transform: rotate(45deg);
