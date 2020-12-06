@@ -89,7 +89,7 @@ function create_opp(n) {
 
   $("<p/>", {
     class: "loc-info",
-    text: `Location: ${visible_list[n].location}`
+    text: `Location: ${visible_list[n].city} ${visible_list[n].state} ${visible_list[n].country}`
   }).appendTo(`#opp-left${n}`);
 
   $("<p/>", {
@@ -99,7 +99,7 @@ function create_opp(n) {
 
   $("<p/>", {
     class: "date-info",
-    text: `Date: ${visible_list[n].dateRange}`
+    text: `Date: ${visible_list[n].startDate} ${visible_list[n].endDate}`
   }).appendTo(`#opp-right${n}`);
 }
 
