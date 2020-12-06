@@ -1,5 +1,6 @@
 var visible_list = JSON.parse(localStorage.getItem("oppsList"));
 var pages = Math.ceil(visible_list.length/20);
+var currentPage;
 
 function sortT(sortType, sortName) {
   for (var n = 0; n < visible_list.length; n++) {
@@ -104,7 +105,7 @@ function create_opp(n) {
 
 function display_sort(page_num) {
   $(".opp-main").html("");
-  console.log("called");
+  currentPage = page_num;
   console.log(visible_list);
   if(page_num != pages){
     for (var n = 20*(page_num-1); n < 20*(page_num); n++) {
@@ -119,9 +120,11 @@ function display_sort(page_num) {
 }
 
 $(".next").on("click", function() {
+  window.location.href = `/opportunities/${currentPage+1}`;
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
 $(".back").on("click", function() {
+    window.location.href = `/opportunities/${currentPage-1}`;
     $("html, body").animate({ scrollTop: 0 }, "slow");
   });
