@@ -15,6 +15,8 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const { check, validationResult } = require('express-validator');
 var LocalStrategy   = require('passport-local').Strategy;
 
+//global.fetch = require("node-fetch");
+
 app.use(express.static("views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
