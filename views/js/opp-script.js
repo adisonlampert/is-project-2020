@@ -101,12 +101,16 @@ function create_opp(n) {
     class: "date-info",
     text: `Date: ${visible_list[n].startDate} ${visible_list[n].endDate}`
   }).appendTo(`#opp-right${n}`);
+
+  $("<p/>", {
+    class: "date-info",
+    text: `Price: ${visible_list[n].cost} ${visible_list[n].currency}`
+  }).appendTo(`#opp-right${n}`);
 }
 
 function display_sort(page_num) {
   $(".opp-main").html("");
   currentPage = page_num;
-  console.log(visible_list);
   if(page_num != pages){
     for (var n = 20*(page_num-1); n < 20*(page_num); n++) {
       create_opp(n);

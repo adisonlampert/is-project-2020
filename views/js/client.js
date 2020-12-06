@@ -5,10 +5,36 @@ fetch("/getOpps", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
+      oppsList.push({
+        name: row.name,
+        category: row.category,
+        type: row.type,
+        country: country,
+        state: row.state,
+        city: row.city,
+        startDate: date,
+        endDate: row.endDate,
+        deadline: deadline,
+        cost: price,
+        currency: currency,
+        description: row.description,
+        link: row.link,
+        id: row.id
+      });
+      localStorage.setItem("oppsList", JSON.stringify(oppsList));
+    });
+  });
+
+fetch("/getPending", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
       var date = "";
       var deadline = "";
       var currency = "";
       var location = "";
+      var price = "";
+      var currency = "";
       if(row.startDate == ""){
         date = "Ongoing";
       }
@@ -27,30 +53,14 @@ fetch("/getOpps", {})
       else {
         country = row.country;
       }
-      oppsList.push({
-        name: row.name,
-        category: row.category,
-        type: row.type,
-        country: country,
-        state: row.state,
-        city: row.city,
-        startDate: date,
-        endDate: row.endDate,
-        deadline: deadline,
-        cost: row.cost,
-        currency: row.currency,
-        description: row.description,
-        link: row.link,
-        id: row.id
-      });
-      localStorage.setItem("oppsList", JSON.stringify(oppsList));
-    });
-  });
-
-fetch("/getPending", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
+      if(row.cost == ""){
+        price = "Free";
+        currency = "";
+      }
+      else {
+        price = row.cost;
+        currency = row.currency;
+      }
       pendingList.push({
         name: row.name,
         category: row.category,
