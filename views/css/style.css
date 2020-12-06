@@ -11,37 +11,33 @@
   width: 100%;
   margin-top: 0px;
   height: 70px;
-  margin-left: -20px;
   padding-right: 18px;
+  padding-bottom: 0px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
-  z-index: 1000000;
+  z-index: 999;
 }
 
 .ombre-below {
   width: 100%;
   position: fixed;
-  margin-left: -20px;
   padding-right: 18px;
   margin-top: -30px;
   background-image: linear-gradient(to right, #919dc5, #eeaacd);
   height: 6px;
-  z-index: 100000;
+  z-index: 1000;
 }
 .navbar-options-stem {
-  display: flex;
-  flex-direction: row;
+  margin-top: 30px;
   margin-right: 10px;
 }
 
 .logo-container-stem {
-  margin-top: 10px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+
 }
 
 .logo {
@@ -51,16 +47,16 @@
 
 .name-stem {
   color: white;
-  margin-top: 30px;
   font-size: 25px;
-  margin-left: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .tab-stem {
-  padding: 30px;
-  margin-top: 20px;
   text-decoration: none;
   color: #EBEBEB;
+  margin-top: 50px;
+  margin-left: 30px;
   font-weight: 700;
 }
 
