@@ -3,11 +3,11 @@
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
-      res.redirect('opportunities/1');
+      res.redirect('opportunities/page=1');
   });
 
   app.get('/opportunities', function(req, res) {
-      res.redirect('opportunities/1');
+      res.redirect('opportunities/oage=1');
   });
 
   app.get('/opportunities/page=:page', function(req, res) {
