@@ -122,9 +122,11 @@ function generateTable(table, data, rowNum) {
         let cell = row.insertCell();
         var spanner = document.createElement("span");
         spanner.classList.add("table-span");
-        let text = document.createTextNode(data[i][key]+"\00");
+        let text = document.createTextNode(data[i][key]);
+
         cell.appendChild(spanner);
         spanner.appendChild(text);
+        spanner.innerHTML = spanner.innerHTML +"<br>";
       }
     }
   }
@@ -147,4 +149,6 @@ function page_ready(){
   }
 }
 
-$(document).ready(page_ready());
+$(document).ready(function() {
+  page_ready();
+});

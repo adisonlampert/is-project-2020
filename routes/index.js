@@ -30,4 +30,12 @@ module.exports = function(app) {
     //}
   });
 
+  app.get('/admin/completed', function(req, res) {
+    if (req.session.loggedin) {
+      res.redirect('back');
+    } else {
+     return res.send('Please login to view this page!');
+    }
+  });
+
 };

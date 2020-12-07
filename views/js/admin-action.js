@@ -9,7 +9,7 @@ function deletePending(num) {
       'Content-Type': 'application/json;charset=utf-8'
     }
   });
-  location.reload();
+  window.location.href = window.location.href;
   event.stopPropagation();
 }
 
@@ -21,7 +21,7 @@ function deleteOpportunities(num) {
       'Content-Type': 'application/json;charset=utf-8'
     }
   });
-  location.reload();
+  window.location.href = window.location.href;
   event.stopPropagation();
 }
 
@@ -52,8 +52,8 @@ $("#update").on('click', function() {
       'Content-Type': 'application/json'
     }
   });
-  location.reload();
-  event.stopPropagation();
+  getOpps();
+  getPending();
 });
 
 $("#move").on('click', function() {
@@ -83,6 +83,11 @@ $("#move").on('click', function() {
       'Content-Type': 'application/json'
     }
   });
-  location.reload();
+  window.location.href = window.location.href;
   event.stopPropagation();
 });
+
+$('#editModal').on('hidden.bs.modal', function () {
+ window.location.href = "/";
+ window.location.href = "/admin";
+})

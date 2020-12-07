@@ -13,9 +13,6 @@ function create_modal(number) {
   var data = Object.keys(pending[0]);
   generateModalTableHead(table, data);
   generateModalTable(table, pending, number);
-  $("<i/>", {
-    class: "fa fa-check-square"
-  }).appendTo(".modal-body");
 }
 
 function generateModalTableHead(table, data) {

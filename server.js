@@ -113,7 +113,7 @@ app.post("/deletePending/:id", (request, response) => {
 		if (err) {
       //request.flash('error', err)
       // redirect to users list page
-      response.render('pages/admin')
+      response.render('pages/admin');
   	}
 		else {
       //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
@@ -167,19 +167,18 @@ app.post("/updatePending", (request, response) => {
 		visibility: request.body.visibility,
 	}
 
-	console.log(createChange);
 	var user = { id: request.body.id }
 
 	con.query('UPDATE Pending SET ? WHERE ?', [createChange, user], function (err, resp) {
 		if (err) {
-      request.flash('error', err)
+      console.log('error', err);
       // redirect to users list page
-      response.render('pages/home')
+      response.render('pages/home');
   	}
 		else {
       //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
       // redirect to users list page
-      response.redirect(request.get('referer'));
+
 		}
 	});
 });
