@@ -145,7 +145,7 @@ app.post("/deleteOpportunities/:id", (request, response) => {
 	//}
 });
 
-app.post("/updatePending", (request, response) => {
+app.post("/updatePending", checkForm, (request, response) => {
 
 	var createChange = {
 		name: request.body.name,
@@ -180,7 +180,7 @@ app.post("/updatePending", (request, response) => {
 	});
 });
 
-app.post("/movePending", (request, response) => {
+app.post("/movePending", checkForm, (request, response) => {
 
 	var createChange = {
 		name: request.body.name,
