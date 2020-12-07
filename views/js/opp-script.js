@@ -124,11 +124,15 @@ function display_sort(page_num) {
 }
 
 $(".next").on("click", function() {
-  window.location.href = `/opportunities/${currentPage+1}`;
+  if(currentPage != pages){
+    window.location.href = `/opportunities/${currentPage+1}`;
+  }
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
 $(".back").on("click", function() {
+  if(currentPage != 1){
     window.location.href = `/opportunities/${currentPage-1}`;
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-  });
+  }
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+});
