@@ -10,7 +10,7 @@ module.exports = function(app) {
       res.redirect('opportunities/1');
   });
 
-  app.get('/opportunities/:page', function(req, res) {
+  app.get('/opportunities/page=:page', function(req, res) {
       res.render('pages/opportunities', {info: req.params.page});
   });
 
