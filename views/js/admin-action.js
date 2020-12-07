@@ -9,8 +9,7 @@ function deletePending(num) {
       'Content-Type': 'application/json;charset=utf-8'
     }
   });
-  window.location.href = window.location.href;
-  event.stopPropagation();
+  getPending();
 }
 
 function deleteOpportunities(num) {
@@ -21,8 +20,7 @@ function deleteOpportunities(num) {
       'Content-Type': 'application/json;charset=utf-8'
     }
   });
-  window.location.href = window.location.href;
-  event.stopPropagation();
+  getOpps();
 }
 
 $("#update").on('click', function() {
@@ -83,8 +81,8 @@ $("#move").on('click', function() {
       'Content-Type': 'application/json'
     }
   });
-  window.location.href = window.location.href;
-  event.stopPropagation();
+  getOpps();
+  getPending();
 });
 
 $('#editModal').on('hidden.bs.modal', function () {
