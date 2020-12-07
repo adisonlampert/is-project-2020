@@ -7,7 +7,6 @@ const app = express();
 const path = require('path')
 const http = require("http");
 const session = require('express-session');
-const port = 8080;
 const fs = require("fs");
 const routes = require('./routes/index.js');
 const partials = require('express-partials');
