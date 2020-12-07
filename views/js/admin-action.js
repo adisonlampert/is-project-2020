@@ -32,7 +32,7 @@ $("#update").on('click', function() {
 		country: $("#country").val(),
 		state: $("#state").val(),
 		city: $("#city").val(),
-		startDate: $("#startDate").val(),
+		startDate: $("#startDate").val().slice(0, -3),
 		endDate: $("#endDate").val(),
 		deadline: $("#deadline").val(),
 		cost: $("#cost").val(),
