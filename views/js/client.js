@@ -8,19 +8,19 @@ function getOpps() {
     .then(response => {
       response.forEach(row => {
         oppsList.push({
-          name: row.name,
+          name: html_unescape(row.name),
           category: row.category,
           type: row.type,
-          country: row.country,
-          state: row.state,
-          city: row.city,
+          country: html_unescape(row.country),
+          state: html_unescape(row.state),
+          city: html_unescape(row.city),
           startDate: row.startDate,
           endDate: row.endDate,
           deadline: row.deadline,
-          cost: row.cost,
+          cost: html_unescape(row.cost),
           currency: row.currency,
-          description: row.description,
-          link: row.link,
+          description: html_unescape(row.description),
+          link: html_unescape(row.link),
           id: row.id
         });
         localStorage.setItem("oppsList", JSON.stringify(oppsList));
@@ -67,24 +67,30 @@ function getPending() {
           currency = row.currency;
         }
         pendingList.push({
-          name: row.name,
+          name: html_unescape(row.name),
           category: row.category,
           type: row.type,
-          country: country,
-          state: row.state,
-          city: row.city,
+          country: html_unescape(country),
+          state: html_unescape(row.state),
+          city: html_unescape(row.city),
           startDate: date,
           endDate: row.endDate,
           deadline: deadline,
-          cost: price,
+          cost: html_unescape(price),
           currency: currency,
-          description: row.description,
-          link: row.link,
+          description: html_unescape(row.description),
+          link: html_unescape(row.link),
           id: row.id
         });
         localStorage.setItem("pendingList", JSON.stringify(pendingList));
       });
     });
+}
+
+function html_unescape(s) {
+  var div = document.createElement("div");
+  div.innerHTML = s;
+  return div.textContent || div.innerText; // IE is different
 }
 
 getOpps();

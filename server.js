@@ -13,7 +13,6 @@ const partials = require('express-partials');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const { check, validationResult } = require('express-validator');
 var LocalStrategy   = require('passport-local').Strategy;
-
 //global.fetch = require("node-fetch");
 
 app.use(express.static("views"));
@@ -68,7 +67,17 @@ app.get("/getPending", function (request, response) {
 	});
 });
 
-app.post("/upload", (request, response) => {
+var checkForm = [
+	check('name').trim().escape(),
+	check('country').trim().escape(),
+	check('state').trim().escape(),
+	check('city').trim().escape(),
+	check('cost').trim().escape(),
+	check('description').trim().escape(),
+	check('link').trim().escape()
+];
+
+app.post("/upload", checkForm, (request, response) => {
 
   var createUpload = {
 		name: request.body.name,
