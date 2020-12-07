@@ -40,7 +40,7 @@ function getPending() {
         var location = "";
         var price = "";
         var currency = "";
-        if(row.startDate == ""){
+        if(row.startDate == "" || row.startDate == "Ongoing"){
           date = "Ongoing";
         }
         else {

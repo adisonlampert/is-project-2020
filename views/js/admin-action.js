@@ -25,6 +25,11 @@ function deleteOpportunities(num) {
 
 $("#update").on('click', function() {
 
+  var startDate = $("#startDate").val();
+  if($("#startDate").val() != "Ongoing"){
+    startDate = $("#startDate").val().slice(0, -3);
+  }
+
   var createChange = {
 		name: $("#name").val(),
 		category: $("#category").val(),
@@ -32,7 +37,7 @@ $("#update").on('click', function() {
 		country: $("#country").val(),
 		state: $("#state").val(),
 		city: $("#city").val(),
-		startDate: $("#startDate").val().slice(0, -3),
+		startDate: startDate,
 		endDate: $("#endDate").val(),
 		deadline: $("#deadline").val(),
 		cost: $("#cost").val(),
