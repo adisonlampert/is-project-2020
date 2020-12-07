@@ -6,7 +6,7 @@
     <body>
 
         <%- include('../partials/nav'); -%>
-        
+
         <div class="opp-container">
           <div class="filter">
             <div class="options">
@@ -32,7 +32,7 @@
                 </label>
 
                 <label type="checkbox" checked="checked" class="name-type container-opp">
-                  <input type="checkbox" class="type-filter" value="Hackathons">
+                  <input type="checkbox" class="type-filter" value="Hackathon">
                   <span class="checkmark"></span>
                   Hackathon
                 </label>
@@ -201,6 +201,8 @@
                     Other
                   </label>
 
+                  <button class="filter-opps"> Filter</button>
+
 
             </div>
             <div class="opp-divider"></div>
@@ -214,13 +216,17 @@
         </div>
         <div class="button-container">
           <div class="back button button-inactive"> &larr; Prev </div>
-          <div class="page-nav-container"></div>
           <div class="next button button-inactive">Next &rarr; </div>
         </div>
 
         <%- include('../partials/footer.ejs'); -%>
 
         <%- include('../partials/scripts.ejs'); -%>
+        <script>
+          $(document).ready(function() {
+            display_sort(<%- info %>);
+          });
+        </script>
 
     </body>
 </html>

@@ -3,14 +3,38 @@
 
     <%- include('../../partials/head.ejs'); -%>
 
-    <body>
+    <body class="admin-body">
 
-      <p> Hiya </p>
+      <div>
+        <h1 id="admin-header"> Admin Panel </h1>
+      </div>
 
+      <div id="editModal" class="modal fade" role='dialog'>
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Edit Pending Upload</h4>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" id="update" data-dismiss="modal">Update</button>
+                  <button type="button" class="btn btn-default" id="move" data-dismiss="modal">Move</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+        </div>
+      </div>
 
-    <%- include('../partials/footer.ejs'); -%>
+      <div class="admin-main">
+        <div class="admin-container"></div>
+        <div class="published-container"></div>
+      </div>
 
-    <%- include('../partials/scripts.ejs'); -%>
+    <%- include('../../partials/footer.ejs'); -%>
+
+    <%- include('../../partials/scripts.ejs'); -%>
+    <script src="../js/admin.js"></script>
 
     </body>
   </html>
