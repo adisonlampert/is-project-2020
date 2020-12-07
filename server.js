@@ -209,10 +209,9 @@ app.post("/movePending", checkForm, (request, response) => {
 });
 
 function userIsAllowed(callback, status) {
-  // this function would contain your logic, presumably asynchronous,
+  // this function contains logic
   // about whether or not the user is allowed to see files in the
   // protected directory
-  console.log(status);
   callback(status);
 };
 

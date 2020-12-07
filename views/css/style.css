@@ -684,7 +684,20 @@ span.select2-selection.select2-selection--single {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-left: 120px;
+  margin-left: 210px;
+}
+
+.filter-opps {
+  padding: 5px 10px;
+  margin: 0px 5px;
+  border: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-opps:hover {
+  color: white;
+  background-image: linear-gradient(to right, #919dc5, #eeaacd);
 }
 
 .button {
