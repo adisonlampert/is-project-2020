@@ -61,10 +61,12 @@ app.get("/getOpps", function (request, response) {
 });
 
 app.get("/getPending", function (request, response) {
-	con.query("SELECT * from Pending", function (err, rows, fields) {
-		if (err) throw err;
-		response.send(JSON.stringify(rows));
-	});
+	if (request.session.loggedin) {
+		con.query("SELECT * from Pending", function (err, rows, fields) {
+			if (err) throw err;
+			response.send(JSON.stringify(rows));
+		});
+	}
 });
 
 var checkForm = [
@@ -105,7 +107,7 @@ app.post("/upload", checkForm, (request, response) => {
 
 app.post("/deletePending/:id", (request, response) => {
 	var user = { id: request.params.id }
-	if (req.session.loggedin) {
+	if (request.session.loggedin) {
 	  con.query('DELETE FROM Pending WHERE ?', user, function (err, resp) {
 			if (err) {
 	      response.render('pages/admin');
@@ -123,7 +125,7 @@ app.post("/deleteOpportunities/:id", (request, response) => {
 
 	var user = { id: request.params.id }
 
-	if (req.session.loggedin) {
+	if (request.session.loggedin) {
 	  con.query('DELETE FROM Opportunities WHERE ?', user, function (err, resp) {
 			if (err) {
 	      response.render('pages/admin')
@@ -158,7 +160,7 @@ app.post("/updatePending", checkForm, (request, response) => {
 
 	var user = { id: request.body.id }
 
-	if (req.session.loggedin) {
+	if (request.session.loggedin) {
 		con.query('UPDATE Pending SET ? WHERE ?', [createChange, user], function (err, resp) {
 			if (err) {
 	      console.log('error', err);
@@ -193,7 +195,7 @@ app.post("/movePending", checkForm, (request, response) => {
 
 	var user = { id: request.body.id }
 
-	if (req.session.loggedin) {
+	if (request.session.loggedin) {
 		con.query('DELETE FROM Pending WHERE ?; INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
 			if (err) {
 				console.log(err)
