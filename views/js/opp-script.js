@@ -2,15 +2,6 @@ var visible_list = JSON.parse(localStorage.getItem("oppsList"));
 var pages = Math.ceil(visible_list.length/20);
 var currentPage;
 
-function sortT(sortType, sortName) {
-  for (var n = 0; n < visible_list.length; n++) {
-    if (visible_list[n][`${sortType}`] != sortName) {
-      visible_list[n].visible = false;
-    }
-  }
-  display_sort();
-}
-
 function create_opp(n) {
   $("<div/>", {
     class: "single-container-stem",
@@ -140,5 +131,48 @@ $(".back").on("click", function() {
   if(currentPage > 1){
     window.location.href = `/opportunities/page=${currentPage-1}`;
   }
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+});
+
+$(".filter-opps").on("click", function() {
+  visible_list = JSON.parse(localStorage.getItem("oppsList"));
+  var types = [];
+  var categories = [];
+  
+  if($("input[class='type-filter']:checked").length){
+    $.each($("input[class='type-filter']:checked"), function() {
+        types.push($(this).val());
+    });
+  }
+
+  var visible_list1 = visible_list.filter(function(opportunity) {
+    if(types.length == 0){
+      return true;
+    }
+    else{
+      return types.includes(opportunity["type"]);
+    }
+  });
+
+  if($("input[class='category-filter']:checked").length){
+    $.each($("input[class='category-filter']:checked"), function() {
+        console.log(categories.length);
+        categories.push($(this).val());
+    });
+  }
+
+  var visible_list2 = visible_list1.filter(function(opportunity) {
+    console.log(categories.length);
+    if(categories.length == 0){
+      return true;
+    }
+    else{
+      return categories.includes(opportunity["category"]);
+    }
+  });
+
+  visible_list = visible_list2;
+  pages = Math.ceil(visible_list.length/20);
+  display_sort(1);
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
