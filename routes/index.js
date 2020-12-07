@@ -23,11 +23,11 @@ module.exports = function(app) {
   });
 
   app.get('/admin', function(req, res) {
-    //if (req.session.loggedin) {
+    if (req.session.loggedin) {
       res.render('pages/protected/admin')
-    //} else {
-    //  return res.send('Please login to view this page!');
-    //}
+    } else {
+     return res.send('Please login to view this page!');
+    }
   });
 
   app.get('/admin/completed', function(req, res) {

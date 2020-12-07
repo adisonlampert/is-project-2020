@@ -105,44 +105,36 @@ app.post("/upload", checkForm, (request, response) => {
 
 app.post("/deletePending/:id", (request, response) => {
 	var user = { id: request.params.id }
-	//if (req.session.loggedin) {
-  con.query('DELETE FROM Pending WHERE ?', user, function (err, resp) {
-		if (err) {
-      //request.flash('error', err)
-      // redirect to users list page
-      response.render('pages/admin');
-  	}
-		else {
-      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
-      // redirect to users list page
-      response.redirect(request.get('referer'));
-		}
-	})
-  //} else {
-	//  return res.send('Please login to view this page!');
-	//}
+	if (req.session.loggedin) {
+	  con.query('DELETE FROM Pending WHERE ?', user, function (err, resp) {
+			if (err) {
+	      response.render('pages/admin');
+	  	}
+			else {
+	      response.redirect(request.get('referer'));
+			}
+		})
+  } else {
+	 return res.send('Please login to view this page!');
+	}
 });
 
 app.post("/deleteOpportunities/:id", (request, response) => {
 
 	var user = { id: request.params.id }
 
-	//if (req.session.loggedin) {
-  con.query('DELETE FROM Opportunities WHERE ?', user, function (err, resp) {
-		if (err) {
-      //request.flash('error', err)
-      // redirect to users list page
-      response.render('pages/admin')
-  	}
-		else {
-      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
-      // redirect to users list page
-      response.redirect(request.get('referer'));
-		}
-	})
-  //} else {
-	//  return res.send('Please login to view this page!');
-	//}
+	if (req.session.loggedin) {
+	  con.query('DELETE FROM Opportunities WHERE ?', user, function (err, resp) {
+			if (err) {
+	      response.render('pages/admin')
+	  	}
+			else {
+	      response.redirect(request.get('referer'));
+			}
+		})
+  } else {
+	 return res.send('Please login to view this page!');
+	}
 });
 
 app.post("/updatePending", checkForm, (request, response) => {
@@ -166,18 +158,18 @@ app.post("/updatePending", checkForm, (request, response) => {
 
 	var user = { id: request.body.id }
 
-	con.query('UPDATE Pending SET ? WHERE ?', [createChange, user], function (err, resp) {
-		if (err) {
-      console.log('error', err);
-      // redirect to users list page
-      response.render('pages/home');
-  	}
-		else {
-      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
-      // redirect to users list page
-
-		}
-	});
+	if (req.session.loggedin) {
+		con.query('UPDATE Pending SET ? WHERE ?', [createChange, user], function (err, resp) {
+			if (err) {
+	      console.log('error', err);
+	      // redirect to users list page
+	      response.render('pages/home');
+	  	}
+			else {
+	      response.redirect(request.get('referer'));
+			}
+		});
+	}
 });
 
 app.post("/movePending", checkForm, (request, response) => {
@@ -201,19 +193,17 @@ app.post("/movePending", checkForm, (request, response) => {
 
 	var user = { id: request.body.id }
 
-	con.query('DELETE FROM Pending WHERE ?; INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
-		if (err) {
-      //request.flash('error', err)
-      // redirect to users list page
-			console.log(err)
-      response.render('pages/home')
-  	}
-		else {
-      //request.flash('success', 'User deleted successfully! id = ' + request.params.id)
-      // redirect to users list page
-      response.redirect(request.get('referer'));
-		}
-	});
+	if (req.session.loggedin) {
+		con.query('DELETE FROM Pending WHERE ?; INSERT INTO Opportunities SET ?', [user, createChange], function (err, resp) {
+			if (err) {
+				console.log(err)
+	      response.render('pages/home')
+	  	}
+			else {
+	      response.redirect(request.get('referer'));
+			}
+		});
+	}
 });
 
 function userIsAllowed(callback, status) {
