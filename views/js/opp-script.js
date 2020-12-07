@@ -124,14 +124,14 @@ function display_sort(page_num) {
 }
 
 $(".next").on("click", function() {
-  if(currentPage != pages){
+  if(currentPage >= pages){
     window.location.href = `/opportunities/${currentPage+1}`;
   }
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
 $(".back").on("click", function() {
-  if(currentPage != 1){
+  if(currentPage <= 1){
     window.location.href = `/opportunities/${currentPage-1}`;
   }
   $("html, body").animate({ scrollTop: 0 }, "slow");
